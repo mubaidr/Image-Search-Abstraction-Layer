@@ -1,0 +1,39 @@
+body {
+  padding: 0 20px;
+  color: #3e50b4;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+.brand.large {
+  font-size: 3em;
+  color: #663ab6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #663ab6;
+}
+
+a {
+  color: #e81e62;
+}
+
+a:hover {
+  color: #c1185a;
+}
+
+.container {
+  margin: 25px 0;
+  padding: 25px;
+  text-align: center;
+}
+
+.error {
+  font-size: 3em;
+  color: #fe5622;
+}
