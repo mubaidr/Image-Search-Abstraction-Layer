@@ -24,14 +24,21 @@ app.get('/404', (req, res) => {
 app.get('/api/imagesearch/:search', function (req, res) {
   let search = req.params.search
   let offset = url.parse(req.originalUrl, true).query.offset || 10
-  dbService.searchImages(search, offset)
-  res.send('search')
+
+  dbService.searchImages(search, offset).then(result => {
+    res.send(result)
+  }).catch(err => {
+    res.status(500).send(err)
+  })
 })
 
 /* latest searches */
 app.get('/api/imagesearch', function (req, res) {
-  dbService.getLatestSearches()
-  res.send('latest search')
+  dbService.getLatestSearches().then(result => {
+    res.send(result)
+  }).catch(err => {
+    res.status(500).send(err)
+  })
 })
 
 /* all others */
