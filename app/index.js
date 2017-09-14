@@ -20,14 +20,23 @@ app.get('/404', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/404.html'))
 })
 
+/* new search */
+app.get('/api/imagesearch/:search', function (req, res) {
+  let search = req.params.search
+  let offset = url.parse(req.originalUrl, true).query.offset || 10
+  dbService.searchImages(search, offset)
+  res.send('search')
+})
+
+/* latest searches */
+app.get('/api/imagesearch', function (req, res) {
+  dbService.getLatestSearches()
+  res.send('latest search')
+})
+
 /* all others */
 app.get('*', function (req, res) {
   res.redirect('/404')
-})
-
-/* conversion post */
-app.post('/', (req, res) => {
-
 })
 
 /* start app */
