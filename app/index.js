@@ -23,7 +23,7 @@ app.get('/404', (req, res) => {
 /* new search */
 app.get('/api/imagesearch/:search', function (req, res) {
   let search = req.params.search
-  let offset = url.parse(req.originalUrl, true).query.offset || 10
+  let offset = parseInt(url.parse(req.originalUrl, true).query.offset)
 
   dbService.searchImages(search, offset).then(result => {
     res.send(result)
